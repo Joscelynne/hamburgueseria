@@ -38,10 +38,10 @@ h3 {
 
 /* Card Login */
 .card {
-    background: rgba(231, 179, 179, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 15px;
     padding: 30px 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(230, 12, 12, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -53,24 +53,24 @@ h3 {
 /* Form labels */
 .form-label {
     font-weight: 600;
-    color: #333;
+    color: #000000;
 }
 
 /* Inputs */
 .form-control {
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff0505;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
-    border-color: #FF4500;
+    border-color: #ff0000;
     box-shadow: 0 0 8px rgba(255,69,0,0.3);
 }
 
 /* Botón */
 .btn-dark {
-    background-color: #FF4500;
+    background-color: #ff0404;
     border: none;
     border-radius: 10px;
     font-weight: bold;
@@ -78,7 +78,7 @@ h3 {
 }
 
 .btn-dark:hover {
-    background-color: #FF6347;
+    background-color: #ff2600;
     transform: scale(1.05);
 }
 

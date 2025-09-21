@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="iniciarSesion.css">
+
   <title>Inicio de Sesión</title>
 
   <!-- Bootstrap 5 -->
@@ -12,23 +14,38 @@
 <body>
 
   <!-- Header -->
-  <header class="bg-light border-bottom">
-    <div class="container d-flex justify-content-between align-items-center py-2">
-      <div>
-        <h5 class="mb-0">Site Name</h5>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container-fluid">
+      <!-- Logo + nombre de la tienda -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="https://play-lh.googleusercontent.com/LDzF7SqTi-OKEF_O9xHLYuiZwm3a1wrAO1JJ1Al4GeJ6j4DFzDwHS9fx7KQLt8xK6tc=w240-h480-rw" 
+            alt="Logo" width="60" height="60" class="me-2">
+        <span class="fw-bold fs-4 text-white">Hotburguer</span>
+      </a>
+
+      <!-- Botón colapsable -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav"
+        aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="menuNav">
+        <div class="navbar-nav">
+          <a class="nav-link fw-bold me-3 text-white" href="index.html">Home</a>
+          <a class="nav-link fw-bold me-3 text-white" href="productos.html">Productos</a>
+          <a class="nav-link fw-bold me-3 text-white" href="nosotros.html">Nosotros</a>
+          <a class="nav-link fw-bold me-3 text-white" href="blogs.html">Blogs</a>
+          <a class="nav-link fw-bold me-3 text-white" href="contacto.html">Contacto</a>
+        </div>
       </div>
-      <nav>
-        <a href="index.html" class="mx-2">Home</a>
-        <a href="#" class="mx-2">Productos</a>
-        <a href="#" class="mx-2">Nosotros</a>
-        <a href="#" class="mx-2">Blog</a>
-        <a href="#" class="mx-2">Contacto</a>
-      </nav>
-      <div>
-        <a href="#">Cart (0)</a>
+
+      <!-- Carrito -->
+      <div class="d-flex">
+        <a href="carrito.html" class="nav-link fw-bold text-white">Cart (0)</a>
       </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Login -->
   <section class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 80vh;">
@@ -37,7 +54,7 @@
     <div class="mb-3 bg-secondary" style="width:120px; height:80px;"></div>
 
     <!-- Nombre empresa -->
-    <h3 class="mb-4">Nombre Empresa</h3>
+    <h3 class="mb-4">Hot Burguer</h3>
 
     <!-- Formulario -->
     <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
@@ -45,11 +62,11 @@
       <form>
         <div class="mb-3">
           <label for="correo" class="form-label">Correo</label>
-          <input type="email" id="correo" class="form-control" required>
+          <input type="email" id="correo" class="form-control">
         </div>
         <div class="mb-3">
           <label for="contrasena" class="form-label">Contraseña</label>
-          <input type="password" id="contrasena" class="form-control" required>
+          <input type="password" id="contrasena" class="form-control">
         </div>
         <button type="submit" class="btn btn-dark w-100">Iniciar sesión</button>
       </form>
