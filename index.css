@@ -1,0 +1,154 @@
+/* --- Fuentes y estilo global --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff3e0; /* color suave, tipo pan tostado */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Header --- */
+header {
+    background: linear-gradient(90deg, #ff6b6b, #ff0000);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h5 {
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav a:hover {
+    color: #ffe600;
+}
+
+/* --- Login/Register --- */
+.container.text-end a {
+    color: #0f0501;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.container.text-end a:hover {
+    color: #ff0303;
+    text-decoration: underline;
+}
+
+/* --- Hero Section --- */
+section.container.my-4 .row {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+section.container.my-4 h2 {
+    color: #000000;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+section.container.my-4 p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+section.container.my-4 button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+section.container.my-4 button:hover {
+    background-color: #ff0000;
+}
+
+/* --- Productos --- */
+.card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4), 0 0 15px rgba(255, 0, 0, 0.3); /* iluminación roja */
+}
+
+.card-body h6 {
+    color: #000000; /* ahora los nombres son negros */
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.card:hover .card-body h6 {
+    color: #ff0000;
+}
+
+.card-body p {
+    color: #555;
+}
+
+.card-body strong {
+    color: #ff3d00;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.card:hover .card-body strong {
+    color: #ff0000;
+}
+
+/* Imagen placeholder */
+.card .bg-light {
+    background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80') center/cover no-repeat;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #ff6b6b;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+
+footer a {
+    color: rgb(0, 0, 0);
+    margin-right: 15px;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: #ff0000;
+}
+
+footer input.form-control {
+    border-radius: 50px 0 0 50px;
+}
+
+footer button {
+    border-radius: 0 50px 50px 0;
+    background-color: #d32f2f;
+    border: none;
+}
+
+footer button:hover {
+    background-color: #bf360c;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    section.container.my-4 .row {
+        flex-direction: column-reverse;
+    }
+}
