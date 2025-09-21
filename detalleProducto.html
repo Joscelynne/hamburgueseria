@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle Producto</title>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="background:#f0f0f0; padding:10px; display:flex; justify-content:space-between; align-items:center;">
+    <div><strong>Site Name</strong></div>
+    <nav>
+      <a href="file:///C:/Users/dairy/Desktop/Duoc2025/Desarrollo%20de%20aplicaciones%20moviles/Daihtml/intento%20prueba/main.html">Home</a> |
+      <a href="#">Productos</a> |
+      <a href="#">Nosotros</a> |
+      <a href="#">Blog</a> |
+      <a href="#">Contacto</a>
+    </nav>
+    <div>Cart (0)</div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <p style="margin:15px 0 0 15px; font-size:14px;">
+    Home &gt; Categoría 2 &gt; Product Title <!--Aqui va el nombre del producto que se esta viendo-->
+  </p>
+
+  <!-- Contenedor principal -->
+  <main style="display:flex; gap:30px; padding:20px;">
+    
+    <!-- Imagen principal -->
+    <section style="flex:2;">
+      <div style="border:1px solid #ccc; height:300px; background:#fafafa;"></div>
+      <div style="display:flex; margin-top:10px; gap:10px;">
+        <div style="border:1px solid #000; width:50px; height:50px;"></div>
+        <div style="border:1px solid #000; width:50px; height:50px;"></div>
+        <div style="border:1px solid #000; width:50px; height:50px;"></div>
+      </div>
+    </section>
+
+    <!-- Información producto -->
+    <section style="flex:1;">
+      <h2>Nombre Producto</h2>
+      <p><strong>$100</strong></p>
+      <p>
+        Las manzanas son un fruto delicioso y versátil, apreciadas en todo el mundo por su dulce sabor...
+      </p>
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" min="1" value="1" max="10" style="width:40px;">
+      <br><br>
+      <button style="background:rgb(11, 34, 247); color:white; padding:10px 20px; border:none; cursor:pointer;">
+        Añadir al carrito
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Productos relacionados -->
+  <section style="padding:20px;">
+    <h3>Productos Relacionados</h3>
+    <div style="display:flex; gap:15px; margin-top:10px;">
+      <div style="border:1px solid #000; width:100px; height:100px;"></div>
+      <div style="border:1px solid #000; width:100px; height:100px;"></div>
+      <div style="border:1px solid #000; width:100px; height:100px;"></div>
+      <div style="border:1px solid #000; width:100px; height:100px;"></div>
+      <div style="border:1px solid #000; width:100px; height:100px;"></div>
+    </div>
+  </section>
+
+</body>
+</html>
