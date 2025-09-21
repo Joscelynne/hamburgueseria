@@ -7,9 +7,10 @@ body {
 
 
 #carta {
-    border: 2px solid #000000;
-    border-radius: 10px;
-    background-color: #fff5f5;
+    box-shadow: 0 4px 20px rgba(83, 68, 68, 0.15), 0 1.5px 0 #110e0e inset;
+    border-radius: 18px 18px 40px 40px;
+    background: linear-gradient(140deg, #ebebdf 30%, #7a7877 100%);
+    padding: 18px;
 }
 
 #imagen:hover {
@@ -18,36 +19,6 @@ body {
 
 }
 
-/* --- Footer --- */
-footer {
-    background-color: #ff6b6b;
-    color: rgb(0, 0, 0);
-    font-weight: 500;
-}
-
-footer a {
-    color: rgb(0, 0, 0);
-    margin-right: 15px;
-    transition: 0.3s;
-}
-
-footer a:hover {
-    color: #ffe600;
-}
-
-footer input.form-control {
-    border-radius: 50px 0 0 50px;
-}
-
-footer button {
-    border-radius: 0 50px 50px 0;
-    background-color: #d32f2f;
-    border: none;
-}
-
-footer button:hover {
-    background-color: #bf360c;
-}
 
 /* --- Login/Register --- */
 .container.text-end a {

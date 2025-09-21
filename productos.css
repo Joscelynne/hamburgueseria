@@ -147,3 +147,16 @@ header nav a:hover {
         font-size: 2rem;
     }
 }
+
+/* --- Login/Register --- */
+.container.text-end a {
+    color: #0f0501;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.container.text-end a:hover {
+    color: #ff0303;
+    text-decoration: underline;
+}

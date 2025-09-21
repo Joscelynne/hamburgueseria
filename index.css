@@ -1,32 +1,7 @@
-/* --- Fuentes y estilo global --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff3e0; /* color suave, tipo pan tostado */
-    color: #333;
-    margin: 0;
-    padding: 0;
+background-color: antiquewhite;
 }
 
-/* --- Header --- */
-header {
-    background: linear-gradient(90deg, #ff6b6b, #ff0000);
-    color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-header h5 {
-    font-weight: bold;
-}
-
-header nav a {
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-header nav a:hover {
-    color: #ffe600;
-}
 
 /* --- Login/Register --- */
 .container.text-end a {
@@ -41,63 +16,57 @@ header nav a:hover {
     text-decoration: underline;
 }
 
-/* --- Hero Section --- */
-section.container.my-4 .row {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-section.container.my-4 h2 {
-    color: #000000;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-section.container.my-4 p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-section.container.my-4 button {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 50px;
-    transition: 0.3s;
-}
-
-section.container.my-4 button:hover {
-    background-color: #ff0000;
-}
-
-/* --- Productos --- */
+/* --- Tarjetas de productos --- */
 .card {
     border: none;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    background-color: #f32400; /* color base */
+    
 }
+
+
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4), 0 0 15px rgba(255, 0, 0, 0.3); /* iluminación roja */
+    background-color: #ff0707; /* iluminación roja suave */
+    box-shadow: 0 8px 20px rgba(245, 5, 5, 0.3), 0 0 15px rgba(255, 0, 0, 0.2);
 }
 
-.card-body h6 {
-    color: #000000; /* ahora los nombres son negros */
-    font-weight: bold;
+.card-body h6,
+.card-body strong {
     transition: color 0.3s;
 }
 
-.card:hover .card-body h6 {
-    color: #ff0000;
+.card:hover .card-body h6,
+.card:hover .card-body strong {
+    color: #ff0000; /* título y precio se vuelven rojo al pasar el mouse */
 }
 
-.card-body p {
-    color: #555;
+
+/* --- Imagen de producto --- */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* --- Cuerpo de la tarjeta --- */
+.card-body {
+    background-color: #fff; /* fondo blanco debajo de la imagen */
+    padding: 15px;
+    transition: background-color 0.3s;
+
+}
+
+.card-body h6 {
+    color: #000000; /* título negro */
+    font-weight: bold;
+    transition: color 0.3s;
+    
 }
 
 .card-body strong {
@@ -106,49 +75,38 @@ section.container.my-4 button:hover {
     transition: color 0.3s;
 }
 
+.card:hover .card-body h6,
 .card:hover .card-body strong {
-    color: #ff0000;
+    color: #ff0000; /* rojo al pasar el mouse */
 }
 
-/* Imagen placeholder */
-.card .bg-light {
-    background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80') center/cover no-repeat;
-}
-
-/* --- Footer --- */
-footer {
-    background-color: #ff6b6b;
-    color: rgb(0, 0, 0);
-    font-weight: 500;
-}
-
-footer a {
-    color: rgb(0, 0, 0);
-    margin-right: 15px;
+/* --- Botones --- */
+.btn-dark {
+    background-color: #000000;
+    color: white;
+    border-radius: 50px;
     transition: 0.3s;
 }
 
-footer a:hover {
-    color: #ff0000;
+.btn-dark:hover {
+    background-color: #ff0000;
+    color: white;
 }
 
-footer input.form-control {
-    border-radius: 50px 0 0 50px;
-}
-
-footer button {
-    border-radius: 0 50px 50px 0;
-    background-color: #d32f2f;
-    border: none;
-}
-
-footer button:hover {
-    background-color: #bf360c;
+/* --- Placeholder de texto en imagen --- */
+.card .bg-light {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
 }
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-    section.container.my-4 .row {
-        flex-direction: column-reverse;
+    section.container.text-center h2 {
+        font-size: 2rem;
     }
 }
+
