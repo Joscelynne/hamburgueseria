@@ -221,6 +221,11 @@ function mostrarCrearUsuario() {
         <div class="text-danger small" id="errorCorreo"></div>
       </div>
       <div class="mb-3">
+        <label for="usuarioContrasena">Contraseña *</label>
+        <input type="email" id="usuarioContrasena" class="form-control">
+        <div class="text-danger small" id="errorContrasena"></div>
+      </div>
+      <div class="mb-3">
         <label for="usuarioFecha">Fecha Nacimiento</label>
         <input type="date" id="usuarioFecha" class="form-control">
       </div>
@@ -261,6 +266,7 @@ function mostrarCrearUsuario() {
   const mensaje = document.getElementById("mensajeUsuario");
   const selectRegion = document.getElementById("usuarioRegion");
   const selectComuna = document.getElementById("usuarioComuna");
+  const contrasena = document.getElementById("usuarioContrasena").value.trim();
 
   // Actualizar comunas según región
   selectRegion.addEventListener("change", () => {
@@ -304,11 +310,14 @@ function mostrarCrearUsuario() {
       document.getElementById("errorCorreo").textContent="Correo inválido (solo @duoc.cl, @profesor.duoc.cl, @gmail.com)"; error=true;
     }
     if(!tipo){document.getElementById("errorTipo").textContent="Seleccione tipo de usuario"; error=true;}
-    if(!direccion || direccion.length>300){document.getElementById("errorDireccion").textContent="Dirección obligatoria y ≤300 caracteres"; error=true;}
-
+    if(!direccion || direccion.length>300){document.getElementById("errorDireccion").textContent="Dirección obligatoria y"; error=true;}
+    if(!contrasena || contrasena.length < 4 || contrasena.length > 10){
+    document.getElementById("errorContrasena").textContent = "Contraseña obligatoria (4 a 10 caracteres)";
+    error = true;
+    }
     if(error) return;
 
-    const usuario = {run,nombre,apellidos,correo,fecha,tipo,region,comuna,direccion};
+    const usuario = {run,nombre,apellidos,contrasena,correo,fecha,tipo,region,comuna,direccion};
     usuarios.push(usuario);
     localStorage.setItem("usuarios",JSON.stringify(usuarios));
 
@@ -316,7 +325,9 @@ function mostrarCrearUsuario() {
     form.reset();
     selectComuna.innerHTML = `<option value="">Seleccione comuna</option>`;
   });
+  
 }
+
 
 // -----------------------------
 // Función: Ver Usuarios
