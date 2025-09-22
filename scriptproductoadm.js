@@ -4,15 +4,20 @@
 const panel = document.getElementById("panelPrincipal");
 
 // Obtener botón de agregar producto
-const btnAgregarProducto = document.getElementById("agregarProducto");
-const btnInventario = document.getElementById("inventarioo");
-const btnCrearUsuario = document.getElementById("crearusuarioadm");
 const btnVerUsuarios = document.getElementById("listausuario");
+const btnCrearUsuario = document.getElementById("crearusuarioadm");
+const btnInventario = document.getElementById("inventarioo");
+const btnAgregarProducto = document.getElementById("agregarProducto");
 
 
 // Array de productos desde localStorage
 let productos = JSON.parse(localStorage.getItem("productos")) || [];
-let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+function guardarProductos() {
+  localStorage.setItem("productos", JSON.stringify(productos));
+}
+function obtenerUsuarios() {
+  return JSON.parse(localStorage.getItem("usuarioss")) || [];
+}
 
 // Función para mostrar el formulario de agregar producto
 function mostrarAgregarProducto() {
@@ -24,36 +29,30 @@ function mostrarAgregarProducto() {
         <input type="text" class="form-control" id="codigoProducto">
         <div class="text-danger small" id="errorCodigo"></div>
       </div>
-
       <div class="mb-3">
         <label for="nombreProducto" class="form-label">Nombre *</label>
         <input type="text" class="form-control" id="nombreProducto">
         <div class="text-danger small" id="errorNombre"></div>
       </div>
-
       <div class="mb-3">
         <label for="descripcionProducto" class="form-label">Descripción</label>
         <textarea class="form-control" id="descripcionProducto" maxlength="500"></textarea>
       </div>
-
       <div class="mb-3">
         <label for="precioProducto" class="form-label">Precio *</label>
         <input type="number" class="form-control" id="precioProducto" step="0.01">
         <div class="text-danger small" id="errorPrecio"></div>
       </div>
-
       <div class="mb-3">
         <label for="stockProducto" class="form-label">Stock *</label>
         <input type="number" class="form-control" id="stockProducto" step="1">
         <div class="text-danger small" id="errorStock"></div>
       </div>
-
       <div class="mb-3">
         <label for="stockCriticoProducto" class="form-label">Stock Crítico</label>
         <input type="number" class="form-control" id="stockCriticoProducto" step="1">
         <div class="text-danger small" id="errorStockCritico"></div>
       </div>
-
       <div class="mb-3">
         <label for="categoriaProducto" class="form-label">Categoría *</label>
         <select class="form-select" id="categoriaProducto">
@@ -64,19 +63,15 @@ function mostrarAgregarProducto() {
         </select>
         <div class="text-danger small" id="errorCategoria"></div>
       </div>
-
       <div class="mb-3">
         <label for="imagenProducto" class="form-label">Imagen</label>
         <input type="file" class="form-control" id="imagenProducto" accept="image/*">
       </div>
-
       <button type="submit" class="btn btn-primary">Agregar Producto</button>
     </form>
-
     <div id="mensajeProducto" class="mt-3"></div>
   `;
 
-  // Conectar formulario
   const formProducto = document.getElementById("formAgregarProducto");
   const mensaje = document.getElementById("mensajeProducto");
 
@@ -84,12 +79,7 @@ function mostrarAgregarProducto() {
     e.preventDefault();
 
     // Limpiar errores previos
-    document.getElementById("errorCodigo").textContent = "";
-    document.getElementById("errorNombre").textContent = "";
-    document.getElementById("errorPrecio").textContent = "";
-    document.getElementById("errorStock").textContent = "";
-    document.getElementById("errorStockCritico").textContent = "";
-    document.getElementById("errorCategoria").textContent = "";
+    ["errorCodigo","errorNombre","errorPrecio","errorStock","errorStockCritico","errorCategoria"].forEach(id => document.getElementById(id).textContent = "");
 
     // Leer valores
     const codigo = document.getElementById("codigoProducto").value.trim();
@@ -99,74 +89,47 @@ function mostrarAgregarProducto() {
     const stock = document.getElementById("stockProducto").value;
     const stockCritico = document.getElementById("stockCriticoProducto").value;
     const categoria = document.getElementById("categoriaProducto").value;
-    const imagen = document.getElementById("imagenProducto").files[0]
-      ? document.getElementById("imagenProducto").files[0].name
-      : null;
+    const imagen = document.getElementById("imagenProducto").files[0] ? document.getElementById("imagenProducto").files[0].name : null;
 
     let error = false;
 
-    // Validaciones personalizadas
-    if (codigo.length < 3) {
-      document.getElementById("errorCodigo").textContent = "El código debe tener al menos 3 caracteres";
-      error = true;
-    }
-    if (nombre === "") {
-      document.getElementById("errorNombre").textContent = "El nombre es obligatorio";
-      error = true;
-    }
-    if (precio === "" || parseFloat(precio) < 0) {
-      document.getElementById("errorPrecio").textContent = "El precio debe ser mayor o igual a 0";
-      error = true;
-    }
-    if (stock === "" || parseInt(stock) < 0) {
-      document.getElementById("errorStock").textContent = "El stock debe ser mayor o igual a 0";
-      error = true;
-    }
-    if (stockCritico !== "" && parseInt(stockCritico) > parseInt(stock)) {
-      document.getElementById("errorStockCritico").textContent = "El stock crítico no puede ser mayor al stock actual";
-      error = true;
-    }
-    if (categoria === "") {
-      document.getElementById("errorCategoria").textContent = "Debe seleccionar una categoría";
-      error = true;
-    }
+    if (codigo.length < 3) { document.getElementById("errorCodigo").textContent = "Código mínimo 3 caracteres"; error = true; }
+    if (nombre === "") { document.getElementById("errorNombre").textContent = "Nombre obligatorio"; error = true; }
+    if (precio === "" || parseFloat(precio) < 0) { document.getElementById("errorPrecio").textContent = "Precio inválido"; error = true; }
+    if (stock === "" || parseInt(stock) < 0) { document.getElementById("errorStock").textContent = "Stock inválido"; error = true; }
+    if (stockCritico !== "" && parseInt(stockCritico) > parseInt(stock)) { document.getElementById("errorStockCritico").textContent = "Stock crítico mayor al stock"; error = true; }
+    if (categoria === "") { document.getElementById("errorCategoria").textContent = "Selecciona categoría"; error = true; }
+    if(error) return;
 
-    if (error) return;
-
-    // Guardar producto en localStorage
     const producto = { codigo, nombre, descripcion, precio: parseFloat(precio), stock: parseInt(stock), stockCritico: stockCritico ? parseInt(stockCritico) : null, categoria, imagen };
 
     productos.push(producto);
-    localStorage.setItem("productos", JSON.stringify(productos));
+    guardarProductos();
 
     mensaje.innerHTML = `<div class="alert alert-success">Producto agregado correctamente</div>`;
     formProducto.reset();
   });
 }
 
+// -----------------------------
+// Mostrar Inventario (Leer)
 function mostrarInventario() {
   let contenido = `
     <h2>Inventario de Productos</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
-          <th>Código</th>
-          <th>Nombre</th>
-          <th>Descripción</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Stock Crítico</th>
-          <th>Categoría</th>
-          <th>Imagen</th>
+          <th>Código</th><th>Nombre</th><th>Descripción</th><th>Precio</th>
+          <th>Stock</th><th>Stock Crítico</th><th>Categoría</th><th>Imagen</th><th>Acciones</th>
         </tr>
       </thead>
       <tbody>
   `;
 
-  if (productos.length === 0) {
-    contenido += `<tr><td colspan="8" class="text-center">No hay productos registrados</td></tr>`;
+  if(productos.length === 0){
+    contenido += `<tr><td colspan="9" class="text-center">No hay productos</td></tr>`;
   } else {
-    productos.forEach(prod => {
+    productos.forEach((prod,index)=>{
       contenido += `
         <tr>
           <td>${prod.codigo}</td>
@@ -177,6 +140,10 @@ function mostrarInventario() {
           <td>${prod.stockCritico !== null ? prod.stockCritico : "-"}</td>
           <td>${prod.categoria}</td>
           <td>${prod.imagen || "-"}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" onclick="editarProducto(${index})">Editar</button>
+            <button class="btn btn-sm btn-danger" onclick="eliminarProducto(${index})">Eliminar</button>
+          </td>
         </tr>
       `;
     });
@@ -185,77 +152,119 @@ function mostrarInventario() {
   contenido += `</tbody></table>`;
   panel.innerHTML = contenido;
 }
-const regiones = [
-  { nombre: "Metropolitana", comunas: ["Santiago", "Las Condes", "La Florida"] },
-  { nombre: "Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué"] },
-  { nombre: "Biobío", comunas: ["Concepción", "Chillán", "Los Ángeles"] }
-];
 
 // -----------------------------
-// Función: Crear Usuario
+// Editar Producto
 // -----------------------------
+function editarProducto(index){
+  const prod = productos[index];
+  panel.innerHTML = `
+    <h2>Editar Producto</h2>
+    <form id="formEditarProducto">
+      <div class="mb-3">
+        <label class="form-label">Código Producto *</label>
+        <input type="text" class="form-control" id="codigoProducto" value="${prod.codigo}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nombre *</label>
+        <input type="text" class="form-control" id="nombreProducto" value="${prod.nombre}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcionProducto">${prod.descripcion}</textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Precio *</label>
+        <input type="number" class="form-control" id="precioProducto" value="${prod.precio}" step="0.01">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Stock *</label>
+        <input type="number" class="form-control" id="stockProducto" value="${prod.stock}" step="1">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Stock Crítico</label>
+        <input type="number" class="form-control" id="stockCriticoProducto" value="${prod.stockCritico || ''}" step="1">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Categoría *</label>
+        <select class="form-select" id="categoriaProducto">
+          <option value="">Selecciona una categoría</option>
+          <option value="hamburguesas" ${prod.categoria==="hamburguesas"?"selected":""}>Hamburguesas</option>
+          <option value="bebidas" ${prod.categoria==="bebidas"?"selected":""}>Bebidas</option>
+          <option value="postres" ${prod.categoria==="postres"?"selected":""}>Postres</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+  `;
+
+  document.getElementById("formEditarProducto").addEventListener("submit", function(e){
+    e.preventDefault();
+    productos[index] = {
+      codigo: document.getElementById("codigoProducto").value.trim(),
+      nombre: document.getElementById("nombreProducto").value.trim(),
+      descripcion: document.getElementById("descripcionProducto").value.trim(),
+      precio: parseFloat(document.getElementById("precioProducto").value),
+      stock: parseInt(document.getElementById("stockProducto").value),
+      stockCritico: document.getElementById("stockCriticoProducto").value ? parseInt(document.getElementById("stockCriticoProducto").value) : null,
+      categoria: document.getElementById("categoriaProducto").value,
+      imagen: prod.imagen
+    };
+    guardarProductos();
+    mostrarInventario();
+  });
+}
+
+// -----------------------------
+// Eliminar Producto
+// -----------------------------
+function eliminarProducto(index){
+  if(confirm("¿Seguro que quieres eliminar este producto?")){
+    productos.splice(index,1);
+    guardarProductos();
+    mostrarInventario();
+  }
+}
+const regiones = [
+  {nombre:"Metropolitana",comunas:["Santiago","Las Condes","La Florida"]},
+  {nombre:"Valparaíso",comunas:["Valparaíso","Viña del Mar","Quilpué"]},
+  {nombre:"Biobío",comunas:["Concepción","Chillán","Los Ángeles"]}
+];
+
 function mostrarCrearUsuario() {
-  let opcionesRegiones = regiones.map(r => `<option value="${r.nombre}">${r.nombre}</option>`).join("");
+  const panel = document.getElementById("panelPrincipal");
+  const opcionesRegiones = regiones.map(r => `<option value="${r.nombre}">${r.nombre}</option>`).join("");
 
   panel.innerHTML = `
     <h2>Crear Usuario</h2>
     <form id="formCrearUsuario">
-      <div class="mb-3">
-        <label for="usuarioRun">Run *</label>
-        <input type="text" id="usuarioRun" class="form-control">
-        <div class="text-danger small" id="errorRun"></div>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioNombre">Nombre *</label>
-        <input type="text" id="usuarioNombre" class="form-control">
-        <div class="text-danger small" id="errorNombre"></div>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioApellidos">Apellidos *</label>
-        <input type="text" id="usuarioApellidos" class="form-control">
-        <div class="text-danger small" id="errorApellidos"></div>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioCorreo">Correo *</label>
-        <input type="email" id="usuarioCorreo" class="form-control">
-        <div class="text-danger small" id="errorCorreo"></div>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioContrasena">Contraseña *</label>
-        <input type="email" id="usuarioContrasena" class="form-control">
-        <div class="text-danger small" id="errorContrasena"></div>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioFecha">Fecha Nacimiento</label>
-        <input type="date" id="usuarioFecha" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label for="usuarioTipo">Tipo de Usuario *</label>
-        <select id="usuarioTipo" class="form-select">
-          <option value="">Seleccione tipo</option>
+      <div class="mb-3"><label>RUT *</label><input type="text" id="usuarioRut" class="form-control"><div class="text-danger small" id="errorRut"></div></div>
+      <div class="mb-3"><label>Nombre *</label><input type="text" id="usuarioNombre" class="form-control"><div class="text-danger small" id="errorNombre"></div></div>
+      <div class="mb-3"><label>Apellidos *</label><input type="text" id="usuarioApellidos" class="form-control"><div class="text-danger small" id="errorApellidos"></div></div>
+      <div class="mb-3"><label>Fecha Nacimiento</label><input type="date" id="usuarioFechaNacimiento" class="form-control"></div>
+      <div class="mb-3"><label>Correo *</label><input type="email" id="usuarioCorreo" class="form-control"><div class="text-danger small" id="errorCorreo"></div></div>
+      <div class="mb-3"><label>Confirmar correo *</label><input type="email" id="usuarioConfirmarCorreo" class="form-control"><div class="text-danger small" id="errorConfirmarCorreo"></div></div>
+      <div class="mb-3"><label>Contraseña *</label><input type="password" id="usuarioContrasena" class="form-control"><div class="text-danger small" id="errorContrasena"></div></div>
+      <div class="mb-3"><label>Confirmar contraseña *</label><input type="password" id="usuarioConfirmarContrasena" class="form-control"><div class="text-danger small" id="errorConfirmarContrasena"></div></div>
+      <div class="mb-3"><label>Dirección *</label><input type="text" id="usuarioDireccion" class="form-control"><div class="text-danger small" id="errorDireccion"></div></div>
+      <div class="mb-3"><label>Rol *</label>
+        <select id="usuarioRol" class="form-select">
+          <option value="">Seleccione rol</option>
           <option value="Administrador">Administrador</option>
-          <option value="Cliente">Cliente</option>
           <option value="Vendedor">Vendedor</option>
+          <option value="Cliente">Cliente</option>
         </select>
-        <div class="text-danger small" id="errorTipo"></div>
+        <div class="text-danger small" id="errorRol"></div>
       </div>
-      <div class="mb-3">
-        <label for="usuarioRegion">Región</label>
-        <select id="usuarioRegion" class="form-select">
-          <option value="">Seleccione región</option>
-          ${opcionesRegiones}
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioComuna">Comuna</label>
-        <select id="usuarioComuna" class="form-select">
-          <option value="">Seleccione comuna</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="usuarioDireccion">Dirección *</label>
-        <input type="text" id="usuarioDireccion" class="form-control">
-        <div class="text-danger small" id="errorDireccion"></div>
+      <div class="row mb-3">
+        <div class="col">
+          <label>Región</label>
+          <select id="usuarioRegion" class="form-select"><option value="">Seleccione región</option>${opcionesRegiones}</select>
+        </div>
+        <div class="col">
+          <label>Comuna</label>
+          <select id="usuarioComuna" class="form-select"><option value="">Seleccione la comuna</option></select>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Crear Usuario</button>
     </form>
@@ -266,106 +275,92 @@ function mostrarCrearUsuario() {
   const mensaje = document.getElementById("mensajeUsuario");
   const selectRegion = document.getElementById("usuarioRegion");
   const selectComuna = document.getElementById("usuarioComuna");
-  const contrasena = document.getElementById("usuarioContrasena").value.trim();
 
   // Actualizar comunas según región
   selectRegion.addEventListener("change", () => {
     const regionSeleccionada = regiones.find(r => r.nombre === selectRegion.value);
-    if(regionSeleccionada){
-      selectComuna.innerHTML = `<option value="">Seleccione comuna</option>` +
-        regionSeleccionada.comunas.map(c => `<option value="${c}">${c}</option>`).join("");
-    } else {
-      selectComuna.innerHTML = `<option value="">Seleccione comuna</option>`;
-    }
+    selectComuna.innerHTML = `<option value="">Seleccione comuna</option>` +
+      (regionSeleccionada ? regionSeleccionada.comunas.map(c => `<option value="${c}">${c}</option>`).join("") : "");
   });
 
   // Enviar formulario
   form.addEventListener("submit", e => {
     e.preventDefault();
+    ["errorRut","errorNombre","errorApellidos","errorCorreo","errorConfirmarCorreo","errorContrasena","errorConfirmarContrasena","errorDireccion","errorRol"].forEach(id => document.getElementById(id).textContent = "");
 
-    // Limpiar errores
-    ["errorRun","errorNombre","errorApellidos","errorCorreo","errorTipo","errorDireccion"].forEach(id=>document.getElementById(id).textContent="");
-
-    // Leer valores
-    const run = document.getElementById("usuarioRun").value.trim();
+    const rut = document.getElementById("usuarioRut").value.trim();
     const nombre = document.getElementById("usuarioNombre").value.trim();
     const apellidos = document.getElementById("usuarioApellidos").value.trim();
+    const fechaNacimiento = document.getElementById("usuarioFechaNacimiento").value;
     const correo = document.getElementById("usuarioCorreo").value.trim();
-    const fecha = document.getElementById("usuarioFecha").value;
-    const tipo = document.getElementById("usuarioTipo").value;
-    const region = document.getElementById("usuarioRegion").value;
-    const comuna = document.getElementById("usuarioComuna").value;
+    const confirmarCorreo = document.getElementById("usuarioConfirmarCorreo").value.trim();
+    const contrasena = document.getElementById("usuarioContrasena").value.trim();
+    const confirmarContrasena = document.getElementById("usuarioConfirmarContrasena").value.trim();
     const direccion = document.getElementById("usuarioDireccion").value.trim();
+    const rol = document.getElementById("usuarioRol").value;
+    const region = selectRegion.value;
+    const comuna = selectComuna.value;
 
-    let error=false;
-
-    // Validaciones
-    if(!run || run.length<7 || run.length>9 || /[^0-9Kk]/.test(run)){
-      document.getElementById("errorRun").textContent="Run inválido (ej: 19011022K)";
-      error=true;
-    }
+    let error = false;
+    if(!rut || rut.length<7 || rut.length>9 || /[^0-9Kk]/.test(rut)){document.getElementById("errorRut").textContent="RUT inválido"; error=true;}
     if(!nombre || nombre.length>50){document.getElementById("errorNombre").textContent="Nombre obligatorio y ≤50 caracteres"; error=true;}
     if(!apellidos || apellidos.length>100){document.getElementById("errorApellidos").textContent="Apellidos obligatorios y ≤100 caracteres"; error=true;}
-    if(!correo || correo.length>100 || !(/@duoc\.cl$|@profesor\.duoc\.cl$|@gmail\.com$/i).test(correo)){
-      document.getElementById("errorCorreo").textContent="Correo inválido (solo @duoc.cl, @profesor.duoc.cl, @gmail.com)"; error=true;
-    }
-    if(!tipo){document.getElementById("errorTipo").textContent="Seleccione tipo de usuario"; error=true;}
-    if(!direccion || direccion.length>300){document.getElementById("errorDireccion").textContent="Dirección obligatoria y"; error=true;}
-    if(!contrasena || contrasena.length < 4 || contrasena.length > 10){
-    document.getElementById("errorContrasena").textContent = "Contraseña obligatoria (4 a 10 caracteres)";
-    error = true;
-    }
+    if(!correo || !(/@duoc\.cl$|@profesor\.duoc\.cl$|@gmail\.com$/i).test(correo)){document.getElementById("errorCorreo").textContent="Correo inválido"; error=true;}
+    if(correo !== confirmarCorreo){document.getElementById("errorConfirmarCorreo").textContent="Los correos no coinciden"; error=true;}
+    if(!contrasena || contrasena.length<4 || contrasena.length>10){document.getElementById("errorContrasena").textContent="Contraseña obligatoria (4-10 caracteres)"; error=true;}
+    if(contrasena !== confirmarContrasena){document.getElementById("errorConfirmarContrasena").textContent="Las contraseñas no coinciden"; error=true;}
+    if(!direccion || direccion.length>300){document.getElementById("errorDireccion").textContent="Dirección obligatoria y ≤300 caracteres"; error=true;}
+    if(!rol){document.getElementById("errorRol").textContent="Debe seleccionar un rol"; error=true;}
     if(error) return;
 
-    const usuario = {run,nombre,apellidos,contrasena,correo,fecha,tipo,region,comuna,direccion};
-    usuarios.push(usuario);
-    localStorage.setItem("usuarios",JSON.stringify(usuarios));
+    const usuarios = obtenerUsuarios();
+    usuarios.push({rut,nombre,apellidos,fechaNacimiento,correo,contrasena,direccion,rol,region,comuna});
+    localStorage.setItem("usuarioss", JSON.stringify(usuarios));
 
-    mensaje.innerHTML = `<div class="alert alert-success">Usuario creado correctamente</div>`;
+    mensaje.innerHTML = `<div class="alert alert-success">Usuario creado correctamente como ${rol}</div>`;
     form.reset();
-    selectComuna.innerHTML = `<option value="">Seleccione comuna</option>`;
+    selectComuna.innerHTML = `<option value="">Seleccione la comuna</option>`;
   });
-  
 }
 
-
-// -----------------------------
-// Función: Ver Usuarios
-// -----------------------------
 function mostrarUsuarios() {
+  const panel = document.getElementById("panelPrincipal");
+  const usuarios = obtenerUsuarios();
   let contenido = `
     <h2>Usuarios Registrados</h2>
     <table class="table table-bordered table-striped">
       <thead class="table-dark">
         <tr>
-          <th>Run</th><th>Nombre</th><th>Apellidos</th><th>Correo</th><th>Fecha Nacimiento</th><th>Tipo</th><th>Región</th><th>Comuna</th><th>Dirección</th>
+          <th>RUT</th><th>Nombre</th><th>Apellidos</th><th>Correo</th><th>Fecha Nacimiento</th><th>Rol</th><th>Región</th><th>Comuna</th><th>Dirección</th>
         </tr>
       </thead>
       <tbody>
   `;
+
   if(usuarios.length===0){
-    contenido+=`<tr><td colspan="9" class="text-center">No hay usuarios registrados</td></tr>`;
+    contenido += `<tr><td colspan="9" class="text-center">No hay usuarios registrados</td></tr>`;
   } else {
     usuarios.forEach(u=>{
-      contenido+=`<tr>
-        <td>${u.run}</td>
+      contenido += `<tr>
+        <td>${u.rut}</td>
         <td>${u.nombre}</td>
         <td>${u.apellidos}</td>
         <td>${u.correo}</td>
-        <td>${u.fecha || "-"}</td>
-        <td>${u.tipo}</td>
-        <td>${u.region || "-"}</td>
-        <td>${u.comuna || "-"}</td>
+        <td>${u.fechaNacimiento||"-"}</td>
+        <td>${u.rol}</td>
+        <td>${u.region||"-"}</td>
+        <td>${u.comuna||"-"}</td>
         <td>${u.direccion}</td>
       </tr>`;
     });
   }
-  contenido+=`</tbody></table>`;
-  panel.innerHTML=contenido;
+
+  contenido += `</tbody></table>`;
+  panel.innerHTML = contenido;
 }
 
 // -------------------------
-// Eventos de los botones
+// Eventos botones
 // -------------------------
 btnCrearUsuario.addEventListener("click", mostrarCrearUsuario);
 btnVerUsuarios.addEventListener("click", mostrarUsuarios);

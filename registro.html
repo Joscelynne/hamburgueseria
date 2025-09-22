@@ -58,10 +58,12 @@
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre *</label>
             <input type="text" id="nombre" class="form-control">
+            <div class="text-danger small" id="error-nombre"></div>
           </div>
           <div class="mb-3">
             <label for="nombre" class="form-label">Apellidos * </label>
             <input type="text" id="apellidos" class="form-control">
+            <div class="text-danger small" id="error-apellidos"></div>
           </div>
           <div class="mb-3">
             <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento </label>
@@ -72,51 +74,53 @@
           <div class="mb-3">
             <label for="correo" class="form-label">Correo * </label>
             <input type="email" id="correo" class="form-control">
+            <div class="text-danger small" id="error-correo"></div>
           </div>
           <div class="mb-3">
             <label for="confirmarCorreo" class="form-label">Confirmar correo * </label>
             <input type="email" id="confirmarCorreo" class="form-control">
+            <div class="text-danger small" id="error-confirmarCorreo"></div>
           </div>
           <div class="mb-3">
             <label for="contrasena" class="form-label">Contraseña</label>
             <input type="password" id="contrasena" class="form-control">
+            <div class="text-danger small" id="error-contrasena"></div>
           </div>
           <div class="mb-3">
             <label for="confirmarContrasena" class="form-label">Confirmar contraseña</label>
             <input type="password" id="confirmarContrasena" class="form-control">
+            <div class="text-danger small" id="error-confirmarContrasena"></div>
           </div>
           <div class="mb-3">
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" id="direccion" class="form-control">
+            <div class="text-danger small" id="error-direccion"></div>
           </div>
           <div class="row mb-3">
             <div class="col">
               <label for="region" class="form-label">Región</label>
               <select id="region" class="form-select">
+
                 <option value="">Seleccione la región</option>
-                <option>Región Metropolitana de Santiago</option>
-                <option>Región de Atacama</option>
-                <option>Región de Ñuble</option>
+                
               </select>
             </div>
             <div class="col">
               <label for="comuna" class="form-label">Comuna</label>
               <select id="comuna" class="form-select">
                 <option value="">Seleccione la comuna</option>
-                <option>La Reina</option>
-                <option>Lampa</option>
-                <option>Concepción</option>
+               
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-dark w-100">Registrar</button>
+          <button type="submit" class="btn btn-dark w-100" id="botonRegistrar">Registrar</button>
       </form>
     </div>
     </div>
   </section>
 
-  <!-- Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="registrousuario.js"></script>
 </body>
 
 </html>
