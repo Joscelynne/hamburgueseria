@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ffffff);
+    font-family: 'poppins', sans-serif;
+    background: antiquewhite;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -31,65 +31,15 @@ section.container .mb-3.bg-secondary {
 }
 
 /* Nombre empresa */
-h3 {
-    color: #ff0101;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+/* --- Login/Register --- */
+.container.text-end a {
+    color: #0f0501;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: 0.3s;
 }
 
-/* Card Login */
-.card {
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: 15px;
-    padding: 30px 20px;
-    box-shadow: 0 10px 25px rgba(230, 12, 12, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
-
-/* Form labels */
-.form-label {
-    font-weight: 600;
-    color: #000000;
-}
-
-/* Inputs */
-.form-control {
-    border-radius: 10px;
-    border: 1px solid #ff0505;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-control:focus {
-    border-color: #ff0000;
-    box-shadow: 0 0 8px rgba(255,69,0,0.3);
-}
-
-/* Botón */
-.btn-dark {
-    background-color: #ff0404;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.btn-dark:hover {
-    background-color: #ff2600;
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .card {
-        padding: 20px 15px;
-    }
-
-    section.container .mb-3.bg-secondary {
-        width: 100px;
-        height: 70px;
-    }
+.container.text-end a:hover {
+    color: #ff0303;
+    text-decoration: underline;
 }

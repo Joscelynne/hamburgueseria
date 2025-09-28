@@ -2,171 +2,238 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros</title>
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="nosotros.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosotros</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="nosotros.css">      
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-        <div class="container-fluid">
-            <!-- Logo + nombre de la tienda -->
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="https://play-lh.googleusercontent.com/LDzF7SqTi-OKEF_O9xHLYuiZwm3a1wrAO1JJ1Al4GeJ6j4DFzDwHS9fx7KQLt8xK6tc=w240-h480-rw"
-                    alt="Logo" width="60" height="60" class="me-2">
-                <span class="fw-bold fs-4 text-white">Hotburguer</span>
-            </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container-fluid">
+    <!-- Logo + nombre de la tienda -->
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="https://play-lh.googleusercontent.com/LDzF7SqTi-OKEF_O9xHLYuiZwm3a1wrAO1JJ1Al4GeJ6j4DFzDwHS9fx7KQLt8xK6tc=w240-h480-rw" 
+           alt="Logo" width="60" height="60" class="me-2">
+      <span class="fw-bold fs-4 text-white">Hotburguer</span>
+    </a>
 
-            <!-- Botón colapsable -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav"
-                aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- Botón colapsable -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav"
+      aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <!-- Links -->
-            <div class="collapse navbar-collapse justify-content-center" id="menuNav">
-                <div class="navbar-nav">
-                    <a class="nav-link fw-bold me-3 text-white" href="index.html">Home</a>
-                    <a class="nav-link fw-bold me-3 text-white" href="productos.html">Productos</a>
-                    <a class="nav-link fw-bold me-3 text-white" href="nosotros.html">Nosotros</a>
-                    <a class="nav-link fw-bold me-3 text-white" href="noticiasimportantes.html">Blogs</a>
-                    <a class="nav-link fw-bold me-3 text-white" href="contacto.html">Contacto</a>
-                </div>
-            </div>
+    <!-- Links -->
+    <div class="collapse navbar-collapse justify-content-center" id="menuNav">
+      <div class="navbar-nav">
+        <a class="nav-link fw-bold me-3 text-white" href="index.html">Home</a>
+        <a class="nav-link fw-bold me-3 text-white" href="productos.html">Productos</a>
+        <a class="nav-link fw-bold me-3 text-white" href="nosotros.html">Nosotros</a>
+        <a class="nav-link fw-bold me-3 text-white" href="noticiasimportantes.html">Blogs</a>
+        <a class="nav-link fw-bold me-3 text-white" href="contacto.html">Contacto</a>
+      </div>
+    </div>
 
-            <!-- Carrito -->
-           <div>
-  <a href="carrito.html" class="text-white text-decoration-none">
+    <!-- Carrito -->
+    <div>
+  <a href="carrito.html" class="text-white text-decoration-none"><i class="bi bi-cart2"></i>
      Carrito (<span id="contadorCarrito">0</span>)
   </a>
 </div>
-        </div>
-    </nav>
-    <!-- Login/Register -->
-    <div class="container text-end mt-2">
-        <a href="iniciarSesion.html">Iniciar sesión</a> |
-        <a href="registro.html">Registrar usuario</a>
-    </div>
+  </div>
+</nav>
+  <!-- Login/Register -->
+  <div class="container text-end mt-2">
+    <a href="iniciarSesion.html">Iniciar sesión</a> |
+    <a href="registro.html">Registrar usuario</a>
+  </div>
 
-    <section class="container my-5">
-        <h1 class="text-center mb-2">NOSOTROS</h1>
-        <h4 class="text-center mb-2">HOT BURGUER</h4>
+  <section class="container my-5">
+    <h1 class="text-center mb-2 "><strong>NOSOTROS</strong></h1>
+    <div class="title-underline"></div>
+    <h5 class="text-center mb-2 mt-2">Ven a conocernos un poquito más</h5>
 
+    <section class="escudo-section d-flex align-items-center mb-4 ;">
+      <div class="container text-center my-5">
+        <h2 class="section-title text-white mb-4" style="text-shadow: 10px;">
+          Conoce nuestra historia
+        </h2>
+        <div class="title-underline mb-4"></div>
+        <div class="row justify-content-center">
+          <div class="mb-3">
 
-        <div class="row align-items-center bg-light p-4 mb-4" id="carta">
-            <div class="mb-3">
-                <h3>¿quienés somos?</h3>
-                <p>
-                    Somos una hamburguesería dedicada a ofrecer las mejores hamburguesas gourmet en un ambiente acogedor
-                    y familiar.
-                    Nuestra misión es brindar una experiencia culinaria única, combinando ingredientes frescos y de alta
-                    calidad con recetas innovadoras.
-                    Realmente nos importa la satisfacción de nuestros clientes y nos esforzamos por superar sus
-                    expectativas en cada visita.
-                    Desde el primer dia que abrimos nuestras puertas, hemos estado comprometidos con la excelencia en
-                    cada aspecto de nuestro negocio, desde la selección de ingredientes hasta el servicio al cliente.
-                    Hasta hoy, seguimos siendo fieles a nuestros valores fundamentales de calidad, sabor y hospitalidad.
-                    Todo gracias a ustedes, nuestros clientes, que nos inspiran a seguir mejorando y creciendo cada día.
-                    Nuestro local, ubicado en el corazón de la ciudad, combina un ambiente acogedor con un diseño
-                    moderno. Pero sabias que antes era una antigua estación de tren?
-                    Hemos conservado algunos elementos históricos para ofrecer una experiencia única a nuestros
-                    clientes.
-                    Consideramos que es fundamental mantener viva la historia del lugar mientras brindamos un espacio
-                    cómodo y agradable para disfrutar de nuestras hamburguesas.
-                </p>
+            <div class="video-box position-relative">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/P_n5PovggGc"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
             </div>
-
-        </div>
-        <div class="row align-items-center bg-light p-4 mb-4" id="carta">
-            <div class="mb-3">
-                <h3>EMPRESA</h3>
-                <p>
-                    Cada día más de 11 millones de invitados visitan los restaurantes de Hot burguer® alrededor del
-                    mundo. Y lo hacen porque nuestros restaurantes son reconocidos por servir productos de alta calidad,
-                    gran sabor, hamburguesas 100% hechas a la parrilla y a un precio accesible. Fundada en 1954, Hot
-                    burguer® es la segunda cadena de hamburguesas en el mundo. Hogar original del Hamburguerhot®, en
-                    donde
-                    encontrarás productos y servicios de calidad que te crean una buena experiencia. Nuestro compromiso
-                    es tener ingredientes de alta calidad, trabajar con nuestras recetas originales y crear
-                    experiencias, eso es lo que define a nuestra marca por más de 50 exitosos años.
-                </p>
-                <div class="mb-3">
-                    <img src="https://preview.redd.it/the-first-burger-king-3090-nw-36th-in-miami-florida-1960s-v0-0n4kofdeucob1.jpg?width=640&crop=smart&auto=webp&s=1e902a7d2020db2b094f8ac117a1a2e991e85e8f"
-                        id="imagen" alt="Premio Mejor Hamburguesa" class="img-fluid rounded shadow"
-                        style="height:250px; object-fit:cover; width:100%;">
-                </div>
-            </div>
-
-        </div>
-        <div class="row align-items-center bg-light p-4 mb-4" id="carta">
-            <div class="mb-3">
-                <h3>desarrolladores</h3>
-                <p>
-                    Este sitio web fue desarrollado por un equipo de talentosos desarrolladores web apasionados por la
-                    tecnología y el diseño. Nuestro objetivo era crear una plataforma en línea que reflejara la esencia
-                    de Hot burguer® y brindara a los usuarios una experiencia intuitiva y atractiva. Utilizamos las
-                    últimas tecnologías web para garantizar que el sitio sea rápido, seguro y compatible con todos los
-                    dispositivos. Estamos orgullosos del resultado final y esperamos que los visitantes disfruten
-                    navegando por nuestro sitio tanto como nosotros disfrutamos creándolo.
-                </p>
-            </div>
-        </div>
 
     </section>
-<footer class="bg-black text-white pt-5 pb-3">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mb-4">
-        <ul class="list-unstyled">
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Preguntas frecuentes</a></li>
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Términos y condiciones</a></li>
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Información legal</a></li>
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Política de privacidad</a></li>
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contáctanos</a></li>
-          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Promociones - Términos y condiciones</a></li>
-        </ul>
+
+
+
+    <section id="quienes-somos" class="py-5">
+      <div class="container text-center text-black">
+        <!-- Título -->
+        <h2 class=" mb-3"><strong>¿Quiénes Somos?</strong></h2>
+
+        <!-- Texto -->
+        <p class="lead mx-auto" style="max-width: 750px;">
+          <!-- historia-->
+          Hotburguer® nació en 1953 en Chile como Insta-BurgerHot, pero en 1954 tuvimos la oportunidad de crecer
+          haciendo que en ese mismo año abrieramos el primer local en Santiago y en 1957 lanzamos nuestro querida el
+          Ultimate Burguer, nuestra amburguesa mas querida por nuestros seguidores.
+          En 1967 crecimos a nivel internacional. Durante los 80 y 90 nos consolidamos como la segunda
+          cadena de hamburguesas más grande del mundo, aunque con altibajos frente otras empresas de comida rapida.
+
+          En 2010 tuvimos la oportunidad de que una empresa nos adoptara, haciendo que nos modernizada la marca y la expandiera. En 2014 nos funcionamos,
+          creando Restaurant Brands International.
+
+          Hoy Hotburguer® tiene más de 19 mil locales en más de 100 países, manteniendo al UltimateBurguer como su emblema.
+
+        </p>
+
+      </div>
+    </section>
+
+
+    </div>
+    <div class="container-fluid">
+      <div class="text-center">
+        <img
+          src="https://png.pngtree.com/png-vector/20240829/ourmid/pngtree-delicious-and-testy-cheese-burger-png-image_13659847.png"
+          alt="Hamburguesa con papas fritas y refresco" class="img-fluid" style="height:150px; width:auto;">
       </div>
     </div>
-    <hr class="bg-light my-4">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-3">
-        <h5 class="text-white">Social</h5>
+    </div>
+
+<div class="row align-items-center">
+  <!-- Texto -->
+  <div class="col-lg-6 mb-4 mb-lg-0">
+    <h3 class="fw-bold text-uppercase mb-3">Nuestra Empresa</h3>
+    <p class="lead">
+      Cada día más de <strong>11 millones de invitados</strong> visitan los restaurantes de 
+      <span class="text-danger fw-bold">Hot Burguer®</span> alrededor del mundo.  
+      Y lo hacen porque nuestros restaurantes son reconocidos por servir 
+      <strong>productos de alta calidad, gran sabor y hamburguesas 100% a la parrilla</strong> 
+      a un precio accesible.  
+    </p>
+    <p>
+      Fundada en 1954, <span class="text-danger fw-bold">Hot Burguer®</span> es la segunda cadena de 
+      hamburguesas en el mundo. Hogar original del <em>Hamburguerhot®</em>, donde encontrarás productos 
+      y servicios de calidad que generan una experiencia única.  
+      Nuestro compromiso: <strong>ingredientes frescos, recetas originales y experiencias memorables</strong>.
+    </p>
+  </div>
+
+  <!-- Imagen -->
+  <div class="col-lg-6 text-center">
+    <img
+      src="https://preview.redd.it/the-first-burger-king-3090-nw-36th-in-miami-florida-1960s-v0-0n4kofdeucob1.jpg?width=640&crop=smart&auto=webp&s=1e902a7d2020db2b094f8ac117a1a2e991e85e8f"
+      alt="Primer restaurante Hot Burguer"
+      class="img-fluid rounded-4 shadow-lg empresa-img">
+  </div>
+</div>
+
+</section>
+    <div class="container-fluid">
+      <div class="text-center">
+        <img
+          src="https://media.licdn.com/dms/image/v2/C4E12AQEZFL7jRLSWWw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1635841658000?e=2147483647&v=beta&t=slFveTOx4F-aBilh7CXbnqu6hlhNYC5H6jcKOklAdNM"
+          alt="emoji" class="img-fluid" style="height:150px; width:auto;">
+      </div>
+    </div>
+    </div>
 
 
-        <div class="d-flex">
-          <a href="#" class="text-white me-3"><i class="fa-brands fa-instagram fa-2x"></i></a>
-          <a href="#" class="text-white me-3"><i class="fa-brands fa-facebook fa-2x"></i></a>
-          <a href="#" class="text-white me-3"><i class="fa-brands fa-youtube fa-2x"></i></a>
-          <a href="#" class="text-white me-3"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+ <section id="quienes-somos"
+  class="py-5">
+      <div class="container text-center text-black">
+        <!-- Título -->
+        <h3 class="mb-4">DESARROLLADORES</h3>
+                <div class="title-underline mb-4"></div>
+
+          <p class="lead">
+          Este sitio web fue desarrollado por un equipo de <strong>talentosos desarrolladores web</strong> 
+          apasionados por la <span class="text-danger fw-bold">tecnología</span> y el 
+          <span class="text-danger fw-bold">diseño</span>.
+          Nuestro objetivo era crear una plataforma que reflejara la esencia de 
+          <span class="text-danger  fw-bold">Hot Burguer®</span> y brindara a los usuarios una experiencia 
+          <strong>intuitiva, rápida y atractiva</strong>.  
+          Utilizamos las últimas tecnologías web para garantizar compatibilidad en todos los dispositivos y 
+          un alto nivel de seguridad.  
+        </p>
+        <small>
+          Estamos orgullosos del resultado final y esperamos que disfruten navegando tanto como nosotros 
+          disfrutamos creándolo .
+        </small>
+      </div>
+    </section>
+
+
+
+
+  </section>
+  <footer class="bg-black text-white pt-5 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Preguntas frecuentes</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Términos y condiciones</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Información legal</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Política de privacidad</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contáctanos</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Promociones - Términos y
+                condiciones</a></li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-6 text-md-end mb-3">
-        <p class="text-white mb-0">TM & © 2025 hot burguer Corporation. All rights reserved.</p>
-        <p class="text-white mb-0"> ESP</p>
-      </div>
-    </div>
-    <hr class="bg-light my-4">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-3 mb-md-0">
-        <a href="#" class="text-white text-decoration-none">Cookie Preferences</a>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <form class="d-flex justify-content-md-end">
-          <input type="email" class="form-control me-2" placeholder="Enter Email">
-          <button class="btn btn-warning">Subscribe</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</footer>
+      <hr class="bg-light my-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3">
+          <h5 class="text-white">Social</h5>
 
-<script src="header.js"></script>
-  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+          <div class="d-flex">
+            <a href="#" class="text-white me-3"><i class="fa-brands fa-instagram fa-2x"></i></a>
+            <a href="#" class="text-white me-3"><i class="fa-brands fa-facebook fa-2x"></i></a>
+            <a href="#" class="text-white me-3"><i class="fa-brands fa-youtube fa-2x"></i></a>
+            <a href="#" class="text-white me-3"><i class="fa-brands fa-linkedin fa-2x"></i></a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end mb-3">
+          <p class="text-white mb-0">TM & © 2025 hot burguer Corporation. All rights reserved.</p>
+          <p class="text-white mb-0"> ESP</p>
+        </div>
+      </div>
+      <hr class="bg-light my-4">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <a href="#" class="text-white text-decoration-none">Cookie Preferences</a>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <form class="d-flex justify-content-md-end">
+            <input type="email" class="form-control me-2" placeholder="Enter Email">
+            <button class="btn btn-warning">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="header.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </body>
 
 </html>

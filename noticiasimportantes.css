@@ -1,11 +1,12 @@
 body {
-    background-color: #ffffff;
+    background-color: antiquewhite;
+    font-family: poppins,Arial, Helvetica, sans-serif;
 }
 
 #noticia {
     border: 2px solid #000000;
     border-radius: 10px;
-    background-color: #fff5f5;
+    background-color: rgba(39, 39, 39, 0.222);
 }
 
 #imagen:hover {
@@ -13,7 +14,14 @@ body {
     transition: transform 0.3s ease;
 
 }
-
+.title-underline {
+    position: star;
+    width: 120px;
+    height: 4px;
+    background-color: #ff3d3d;
+    margin: 0 auto;
+    border-radius: 2px;
+}
 
 /* --- Login/Register --- */
 .container.text-end a {

@@ -1,10 +1,8 @@
 /* --- Fuentes y estilo global --- */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff; /* color suave tipo pan tostado */
-    color: #333;
-    margin: 0;
-    padding: 0;
+    font-family: poppins, sans-serif;
+    background-color: antiquewhite; /* color suave tipo pan tostado */
+
 }
 
 /* --- Header --- */
