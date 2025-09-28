@@ -20,7 +20,7 @@ function renderCarrito() {
       div.className = "d-flex align-items-center mb-3 border-bottom pb-2";
 
       div.innerHTML = `
-        <div style="width:100px;">
+        <div style="width:20%;">
           <img src="${item.imagen}" class="img-fluid rounded" alt="${item.nombre}">
         </div>
         <div class="flex-grow-1 ms-3">
@@ -84,7 +84,7 @@ botonPagar.addEventListener("click", (e) => {
   resumenCarrito.innerHTML = `
     <div class="card border-success shadow-sm mt-3">
       <div class="card-body text-center">
-        <h4 class="text-success fw-bold">✅ Compra realizada con éxito</h4>
+        <h4 class="text-success fw-bold">Compra realizada con éxito</h4>
         ${mensajeDescuento}
         <p class="mb-1">Total original: <span class="text-decoration-line-through text-muted">$${total.toLocaleString()}</span></p>
         <p class="fw-bold fs-5">Total pagado: $${totalFinal.toLocaleString()}</p>

@@ -1,17 +1,32 @@
 body {
-    background-color: #ffffff;
-    position: relative;
-    min-height: 100vh;
+    background-color:antiquewhite;
+    font-family: poppins, sans-serif;
 }
 
-
-
-#carta {
-    box-shadow: 0 4px 20px rgba(83, 68, 68, 0.15), 0 1.5px 0 #110e0e inset;
-    border-radius: 18px 18px 40px 40px;
-    background: linear-gradient(140deg, #ebebdf 30%, #7a7877 100%);
-    padding: 18px;
+.title-underline {
+    width: 120px;
+    height: 4px;
+    background-color: #000000;
+    margin: 0 auto;
+    border-radius: 2px;
 }
+
+#quienes-somos {
+  color: #fff;
+  min-height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  align-items: center; /* centra verticalmente */
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+#quienes-somos h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 
 #imagen:hover {
     transform: scale(1.05);
@@ -32,3 +47,86 @@ body {
     color: #ff0303;
     text-decoration: underline;
 }
+/* Fondo con textura oscura */
+.escudo-section {
+  background: #0e0e0e url("https://www.recetasnestle.com.ec/sites/default/files/srh_recipes/4e4293857c03d819e4ae51de1e86d66a.jpg");
+  background-size: cover;
+  padding: 80px 0;
+}
+
+/* Caja del video */
+.video-box {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón de play */
+.play-btn {
+  font-size: 60px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.play-btn:hover {
+  color: #ff4d4d;
+}
+
+
+#quienes-somos {
+  color: #fff;
+  min-height: 100vh; /* ocupa toda la pantalla */
+  display: flex;
+  align-items: center; /* centra verticalmente */
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+#quienes-somos h2 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#empresa {
+  background: rgba(0, 0, 0, 0.39);/* degrade suave */
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  margin: 40px auto;
+
+}
+
+#empresa h3 {
+  font-size: 2rem;
+  color: #ffffff;
+  border-left: 6px solid #ff0707; /* línea amarilla para destacar */
+  padding-left: 12px;
+}
+
+#empresa p {
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.empresa-img {
+  max-height: 350px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.skew-container {
+  background: url('https://imag.bonviveur.com/hamburguesa-clasica.jpg') no-repeat center center/cover;
+  transform: skewY(-5deg); /* hace el efecto chueco */
+  overflow: hidden;
+  padding: 100px 0;
+  width: 120%;         /* más ancho */
+  margin-left: -10%;   /* centrado otra vez */
+}
+
+.skew-container .content {
+  transform: skewY(5deg); /* corrige el texto para que no quede chueco */
+  max-width: 800px;
+  margin: 0 auto;
+  color: white;
+}
+
