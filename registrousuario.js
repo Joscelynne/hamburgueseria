@@ -41,6 +41,38 @@ selectRegion.addEventListener("change", () => {
 function obtenerUsuarios() {
   return JSON.parse(localStorage.getItem("usuarioss")) || [];
 }
+// Formatear RUT automáticamente mientras se escribe
+const inputRut = document.getElementById("rut");
+inputRut.addEventListener("input", function (e) {
+  let valor = e.target.value;
+
+  // 1. Quitar todo lo que no sea número o K/k
+  valor = valor.replace(/[^0-9kK]/g, "");
+
+  // 2. Limitar a máximo 10 caracteres (9 números + 1 DV)
+  valor = valor.slice(0, 9);
+
+  let cuerpo = valor;
+  let dv = '';
+
+  // 3. Si hay más de un dígito, separar DV
+  if (valor.length > 1) {
+    cuerpo = valor.slice(0, -1);
+    dv = valor.slice(-1).toUpperCase();
+  }
+
+  // 4. Formatear cuerpo con puntos cada 3 dígitos
+  cuerpo = cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  // 5. Unir cuerpo y DV
+  let rutFormateado = cuerpo;
+  if (dv) {
+    rutFormateado += "-" + dv;
+  }
+
+  e.target.value = rutFormateado;
+});
+
 
 // Evento submit
 formRegistro.addEventListener("submit", e => {
@@ -68,14 +100,16 @@ formRegistro.addEventListener("submit", e => {
   let error = false;
 
   // Validaciones
-  if(!rut || rut.length<7 || rut.length>9 || /[^0-9Kk]/.test(rut)){document.getElementById("error-rut").textContent="RUT inválido"; error=true;}
-  if(!nombre || nombre.length>50){document.getElementById("error-nombre").textContent="Nombre obligatorio y ≤50 caracteres"; error=true;}
-  if(!apellidos || apellidos.length>100){document.getElementById("error-apellidos").textContent="Apellidos obligatorios y ≤100 caracteres"; error=true;}
+  
+  
+  if (!/^\d{1,2}\.?\d{3}\.?\d{3}-[\dKk0-9]$/.test(rut)) {document.getElementById("error-rut").textContent = "RUT inválido";error = true;}
+  if(!nombre || nombre.length>50){document.getElementById("error-nombre").textContent="Nombre obligatorio"; error=true;}
+  if(!apellidos || apellidos.length>100){document.getElementById("error-apellidos").textContent="Apellidos obligatorios"; error=true;}
   if(!correo || !(/@duoc\.cl$|@profesor\.duoc\.cl$|@gmail\.com$/i).test(correo)){document.getElementById("error-correo").textContent="Correo inválido"; error=true;}
   if(correo !== confirmarCorreo){document.getElementById("error-confirmarCorreo").textContent="Los correos no coinciden"; error=true;}
   if(!contrasena || contrasena.length<4 || contrasena.length>10){document.getElementById("error-contrasena").textContent="Contraseña obligatoria (4-10 caracteres)"; error=true;}
   if(contrasena !== confirmarContrasena){document.getElementById("error-confirmarContrasena").textContent="Las contraseñas no coinciden"; error=true;}
-  if(!direccion || direccion.length>300){document.getElementById("error-direccion").textContent="Dirección obligatoria y ≤300 caracteres"; error=true;}
+  if(!direccion || direccion.length>300){document.getElementById("error-direccion").textContent="Dirección obligatoria"; error=true;}
 
   if(error) return;
 
